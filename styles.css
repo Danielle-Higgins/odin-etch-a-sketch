@@ -56,11 +56,16 @@ body {
 }
 
 /* Styles for the grid */
-.grid {
+.board .grid {
     border: 1px solid black;
-    width: 550px;
-    height: 550px;
-    /* margin-right: 185px; */
+}
+
+.board {
+    width: 500px;
+    height: 500px;
     background-color: #fff;
     box-shadow: 3px 3px 5px gray;
+
+    display: flex;
+    flex-wrap: wrap;
 }
