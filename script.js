@@ -22,3 +22,15 @@ function creategrid(squares) {
 }
 
 creategrid(16)
+
+// Set up a “hover” effect so that the grid divs change color
+board.addEventListener("mouseenter", (e) => {
+    const grids = document.querySelectorAll(".grid")
+
+    grids.forEach(grid => {
+
+        grid.addEventListener("mouseover", (e) => {
+            e.target.style.backgroundColor = "black"
+        })
+    })
+})

@@ -55,12 +55,13 @@ body {
     color: white;
 }
 
-/* Styles for the grid */
+/* Styles for the grids */
 .board .grid {
     border: 1px solid black;
 }
 
 .board {
+    /* Don't give the board a boarder as it will change the size of the squares */
     width: 500px;
     height: 500px;
     background-color: #fff;
