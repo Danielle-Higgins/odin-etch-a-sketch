@@ -24,15 +24,27 @@ function creategrid(squares) {
 
 creategrid(16)
 
-// Set up a “hover” effect so that the grid divs change color
+// Set up mouse drag effect so that the grid divs change color
 board.addEventListener("mouseenter", (e) => {
     const grids = document.querySelectorAll(".grid")
 
+    // set drag var to be false
+    let drag = false
+
     grids.forEach(grid => {
 
-        grid.addEventListener("mouseover", (e) => {
-            e.target.style.backgroundColor = "black"
+        // when we click down with our mouse, set drag to be true
+        grid.addEventListener("mousedown", (e) => drag = true)
+
+        // when we move our mouse, if drag is true, set the color of each square
+        grid.addEventListener("mousemove", (e) => {
+            if (drag === true) {
+                e.target.style.backgroundColor = "black"
+            }
         })
+
+        // letting go of the mouse will set drag back to false
+        grid.addEventListener("mouseup", (e) => drag = false)
     })
 })
 
