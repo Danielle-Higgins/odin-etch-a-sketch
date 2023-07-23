@@ -50,15 +50,23 @@ body {
     cursor: pointer;
 }
 
+button:hover {
+    background-color: beige;
+}
+
 .buttons .black {
     background-color: black;
     color: white;
 }
 
-/* Styles for the grids */
-.board .grid {
-    border: 1px solid black;
+.buttons .black:hover {
+    background-color: #454545;
 }
+
+/* Styles for the grids */
+/* .board .grid {
+    border: 1px solid black;
+} */
 
 .board {
     /* Don't give the board a boarder as it will change the size of the squares */
