@@ -35,3 +35,35 @@ board.addEventListener("mouseenter", (e) => {
         })
     })
 })
+
+// when user clicks on resize button
+resize.addEventListener("click", (e) => {
+
+    // prompt user to enter number of squares
+    let user = prompt("How many squares per side? (Max is 100)")
+
+    // checking for valid input
+    while (true) {
+        // if the user clicks the cancel button, break out of the function
+        if (user === null) {
+            return
+        }
+
+        if (user < 1 || user > 100) {
+            alert("Number must be between 1-100!")
+        } else {
+            break
+        }
+        user = prompt("How many squares per side? (Max is 100)")
+    }
+
+    // existing grid is removed
+    const grids = document.querySelectorAll(".grid")
+    grids.forEach(grid => {
+        // for each square, remove it from the board
+        board.removeChild(grid)
+    })
+
+    // creating a new grid based on user input
+    creategrid(user)
+})
