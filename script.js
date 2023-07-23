@@ -29,28 +29,32 @@ function creategrid(squares) {
 creategrid(16)
 
 // Set up mouse drag effect so that the grid divs change color
-board.addEventListener("mouseenter", () => {
-    const grids = document.querySelectorAll(".grid")
+function mouseDrag() {
+    board.addEventListener("mouseenter", () => {
+        const grids = document.querySelectorAll(".grid")
 
-    // set drag var to be false
-    let drag = false
+        // set drag var to be false
+        let drag = false
 
-    grids.forEach(grid => {
+        grids.forEach(grid => {
 
-        // when we click down with our mouse, set drag to be true
-        grid.addEventListener("mousedown", () => drag = true)
+            // when we click down with our mouse, set drag to be true
+            grid.addEventListener("mousedown", () => drag = true)
 
-        // when we move our mouse, if drag is true, set the color of each square
-        grid.addEventListener("mousemove", (e) => {
-            if (drag === true) {
-                e.target.style.backgroundColor = "black"
-            }
+            // when we move our mouse, if drag is true, set the color of each square
+            grid.addEventListener("mousemove", (e) => {
+                if (drag === true) {
+                    e.target.style.backgroundColor = "black"
+                }
+            })
+
+            // letting go of the mouse will set drag back to false
+            grid.addEventListener("mouseup", () => drag = false)
         })
-
-        // letting go of the mouse will set drag back to false
-        grid.addEventListener("mouseup", () => drag = false)
     })
-})
+}
+
+mouseDrag()
 
 // when user clicks on resize button
 resize.addEventListener("click", () => {
@@ -108,7 +112,7 @@ rainbow.addEventListener("click", () => {
             // when we click down with our mouse, set drag to be true
             grid.addEventListener("mousedown", () => drag = true)
     
-            // when we move our mouse, if drag is true, set the color of each square
+            // when we move our mouse, if drag is true, set the color of each square to random rgb
             grid.addEventListener("mousemove", (e) => {
                 if (drag === true) {
                     // each time the mouse moves, change rgb value
@@ -126,33 +130,12 @@ rainbow.addEventListener("click", () => {
     })
 })
 
-// revert back to original color
-black.addEventListener("click", () => {
-    board.addEventListener("mouseenter", () => {
-        const grids = document.querySelectorAll(".grid")
-    
-        // set drag var to be false
-        let drag = false
-    
-        grids.forEach(grid => {
-    
-            // when we click down with our mouse, set drag to be true
-            grid.addEventListener("mousedown", () => drag = true)
-    
-            // when we move our mouse, if drag is true, set the color of each square
-            grid.addEventListener("mousemove", (e) => {
-                if (drag === true) {
-                    e.target.style.backgroundColor = "black"
-                }
-            })
-    
-            // letting go of the mouse will set drag back to false
-            grid.addEventListener("mouseup", () => drag = false)
-        })
-    })
-})
+// revert back to original color (default)
+black.addEventListener("click", mouseDrag)
 
+// erases the background color of each sqaure
 eraser.addEventListener("click", () => {
+
     board.addEventListener("mouseenter", () => {
         const grids = document.querySelectorAll(".grid")
     
@@ -164,7 +147,7 @@ eraser.addEventListener("click", () => {
             // when we click down with our mouse, set drag to be true
             grid.addEventListener("mousedown", () => drag = true)
     
-            // when we move our mouse, if drag is true, set the color of each square
+            // when we move our mouse, if drag is true, set the color of each square to none
             grid.addEventListener("mousemove", (e) => {
                 if (drag === true) {
                     e.target.style.backgroundColor = ""
