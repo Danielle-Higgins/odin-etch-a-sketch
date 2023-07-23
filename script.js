@@ -1,4 +1,5 @@
 const board = document.querySelector(".board")
+const resize = document.querySelector(".resize")
 
 // create grids inside of our board
 function creategrid(squares) {

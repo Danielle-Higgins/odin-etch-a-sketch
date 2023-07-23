@@ -62,6 +62,7 @@ body {
 
 .board {
     /* Don't give the board a boarder as it will change the size of the squares */
+    /* border: 1px solid black; */
     width: 500px;
     height: 500px;
     background-color: #fff;
