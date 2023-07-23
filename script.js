@@ -3,6 +3,7 @@ const resize = document.querySelector(".resize")
 const clear = document.querySelector(".clear")
 const rainbow = document.querySelector(".rainbow")
 const black = document.querySelector(".black")
+const eraser = document.querySelector(".eraser")
 
 // create grids inside of our board
 function creategrid(squares) {
@@ -142,6 +143,31 @@ black.addEventListener("click", () => {
             grid.addEventListener("mousemove", (e) => {
                 if (drag === true) {
                     e.target.style.backgroundColor = "black"
+                }
+            })
+    
+            // letting go of the mouse will set drag back to false
+            grid.addEventListener("mouseup", () => drag = false)
+        })
+    })
+})
+
+eraser.addEventListener("click", () => {
+    board.addEventListener("mouseenter", () => {
+        const grids = document.querySelectorAll(".grid")
+    
+        // set drag var to be false
+        let drag = false
+    
+        grids.forEach(grid => {
+    
+            // when we click down with our mouse, set drag to be true
+            grid.addEventListener("mousedown", () => drag = true)
+    
+            // when we move our mouse, if drag is true, set the color of each square
+            grid.addEventListener("mousemove", (e) => {
+                if (drag === true) {
+                    e.target.style.backgroundColor = ""
                 }
             })
     
